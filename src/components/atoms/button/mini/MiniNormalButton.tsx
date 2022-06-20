@@ -21,20 +21,19 @@ export const MiniNormalButton: FC<Props> = (props) => {
 }
 
 const SButton = styled(MiniBaseButton)`
-background-color: #B3B3B3;
-border: none;
-color: #fff;
-&:hover {
-  cursor: pointer;
-  background-color: #999;
-}  
-&:active {
-  background-color: #808080; 
-}
-`;
+  background-color: #B3B3B3;
+  color: #fff;
+  &:hover {
+    cursor: pointer;
+    background-color: #999;
+  }  
+  &:active {
+    background-color: #808080; 
+  }
+  `;
 
 const SText = styled(BaseText)`
-
+  font-size: 10px;
 `;
 
 const SImg = styled.img`

@@ -1,21 +1,22 @@
 import React, { FC, ReactNode } from 'react'
 import styled from "styled-components";
-import saveImage from '../../images/plus.svg';
 
-import { BaseButton } from "./base/BaseButton";
-import { BaseText } from './base/BaseText';
+import { BaseButton } from '../base/BaseButton';
+import { BaseText } from '../base/BaseText';
+
 
 type Props = {
   children: ReactNode;
+  src: string;
 }
 
 
 export const SecondaryButton: FC<Props> = (props) => {
-  const { children } = props;
+  const { children, src } = props;
   
   return (
     <SButton>
-      <SImg src={saveImage} alt="" />
+      <SImg src={src} />
       <SText>{children}</SText>
     </SButton>
   )

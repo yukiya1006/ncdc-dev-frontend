@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from "styled-components";
-import logoImage from "../../images/logo.svg";
 
+import logoImage from "../../../images/logo.svg";
 import { MenuEdit } from './SidebarMenu';
 import { SidebarBottom } from './SidebarBottom';
 

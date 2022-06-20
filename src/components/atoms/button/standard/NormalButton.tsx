@@ -1,6 +1,8 @@
 import React, { FC, ReactNode } from 'react'
 import styled from "styled-components";
-import { BaseButton } from "./base/BaseButton";
+import { BaseButton } from '../base/BaseButton';
+
+
 
 type Props = {
   children: ReactNode;

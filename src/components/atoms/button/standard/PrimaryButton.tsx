@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-import { BaseButton } from "./base/BaseButton";
-import { BaseText } from './base/BaseText';
+import { BaseButton } from "../base/BaseButton";
+import { BaseText } from "../base/BaseText";
+
 
 export const PrimaryButton = (props) => {
   const { children, src } = props;

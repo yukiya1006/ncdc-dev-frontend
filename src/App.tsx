@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-import {Sidebar} from './components/sidebar/Sidebar';
-import {TextArea}  from 'components/main/TextArea';
-import {Footer}  from 'components/footer/Footer';
+import { Footer } from "components/organisums/footer/Footer";
+import { MainArea } from "components/organisums/main/MainArea";
+import { Sidebar } from "components/organisums/sidebar/Sidebar";
+
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <SContainer>
         <Sidebar/>
         <SRightArea>
-          <TextArea/>
+          <MainArea/>
           <Footer/>
         </SRightArea>
       </SContainer>

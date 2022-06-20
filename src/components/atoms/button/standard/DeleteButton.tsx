@@ -1,14 +1,11 @@
-import { ReactComponent as Delete } from '../../images/delete.svg';
+import { FC } from "react";
 import styled from "styled-components";
 
+import { ReactComponent as Delete } from '../../../../images/delete.svg';
+
 export const DeleteButton = () => {
-  const onClickMenuDelete = () => {
-    alert('delete')
-  };
-
   return (
-
-    <SIcon onClick={onClickMenuDelete}>
+    <SIcon>
       <Delete/>
     </SIcon>
   )

@@ -2,7 +2,7 @@ import axios from "axios";
 import react, {useState, useEffect} from "react";
 import styled from "styled-components";
 
-import { DeleteButton } from "../button/DeleteButton"
+import { DeleteButton } from "../../atoms/button/standard/DeleteButton"
 
 export const MenuEdit = () => {
   const [ contents, setContents ] = useState([]);
