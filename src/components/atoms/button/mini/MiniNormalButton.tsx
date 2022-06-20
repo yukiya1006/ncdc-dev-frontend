@@ -6,11 +6,12 @@ import { BaseText } from '../base/BaseText';
 type Props = {
   children: ReactNode;
   src: string;
+  onClick: any;
 }
 
 
 export const MiniNormalButton: FC<Props> = (props) => {
-  const { children, src } = props;
+  const { children, src, onClick } = props;
 
   return (
     <SButton>

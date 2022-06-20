@@ -1,24 +1,31 @@
-import react, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import axios from 'axios'
+import axios from "axios";
 
-import { EditTitleInput } from "components/molecules/EditTitleInput";
-import { EditTextInput } from "components/molecules/EditTextInput";
+import { EditTitleInput } from "components/molecules/main/EditTitleInput";
+import { EditTextInput } from "components/molecules/main/EditTextInput";
+import { useEffect, useState } from "react";
+
+type Content = {
+  body: string;
+}
 
 export const MainArea = () => {
-  const [post, setPost] = useState('')
+  const id = useParams().id;
 
+  const [ contents, setContents ] = useState([]);
+  
   useEffect(() => {
-    axios.get('http://localhost:3000/content/1')
+    axios.get(`http://localhost:3000/content/${id}`)
     .then(res => {
-        setPost(res.data.body)
-    })
-}, [])
-
+    setContents(res.data)
+  })},[id])
+  
+  
   return (
     <SContainer>
-      <EditTitleInput/>
-      <EditTextInput />
+      <EditTitleInput contents={contents}/>
+      <EditTextInput contents={contents}/>
     </SContainer>
   )
 }

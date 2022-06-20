@@ -8,14 +8,15 @@ import { BaseText } from '../base/BaseText';
 type Props = {
   children: ReactNode;
   src: string;
+  onClick: any;
 }
 
 
 export const SecondaryButton: FC<Props> = (props) => {
-  const { children, src } = props;
+  const { children, src, onClick } = props;
   
   return (
-    <SButton>
+    <SButton onClick={onClick}>
       <SImg src={src} />
       <SText>{children}</SText>
     </SButton>

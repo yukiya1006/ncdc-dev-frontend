@@ -1,14 +1,20 @@
+import { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 import { BaseButton } from "../base/BaseButton";
 import { BaseText } from "../base/BaseText";
 
+type Props = {
+  children: ReactNode;
+  src: string;
+  onClick: any;
+}
 
-export const PrimaryButton = (props) => {
-  const { children, src } = props;
+export const PrimaryButton: FC<Props> = (props) => {
+  const { children, src, onClick } = props;
 
   return (
-    <SButton>
+    <SButton  onClick={onClick}>
       <img src={src} />
       <SText>{children}</SText>
     </SButton>
