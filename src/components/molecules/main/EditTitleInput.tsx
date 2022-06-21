@@ -1,5 +1,6 @@
 import styled from "styled-components"; 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import { PrimaryButton } from 'components/atoms/button/standard/PrimaryButton'
 import { MiniNormalButton } from "components/atoms/button/mini/MiniNormalButton";
@@ -7,29 +8,40 @@ import { MiniPrimaryButton } from "components/atoms/button/mini/MiniPrimaryButto
 import editImage from "../../../images/edit.svg";
 import cancelImage from "../../../images/cancel.svg";
 import saveImage from "../../../images/save.svg";
+import { useParams } from "react-router-dom";
+import { stringify } from "querystring";
 
 
 export const EditTitleInput = (props) => {
   const { contents } = props;
+  const id = useParams().id;
 
   const [ isEdit, setIsEdit ] = useState(true);
 
-  const onClickEditTextButton = () => {
+  const onClickEditTitleButton = () => {
     setIsEdit(!isEdit);
+    console.log(isEdit);
   }
-  const onClickCancelEditButton = () => {
-    setIsEdit(true);
-  }
+
+  const [value, setValue] = useState(contents.title);
+  console.log(value);
+
+  useEffect(() => {
+    setValue(contents.title);
+  },[contents])
+
+
   const onClickSaveEditButton = () => {
-    alert("hoge");
-  }
+    setIsEdit(!isEdit);  
+    axios.put(`http://localhost:3000/content/${id}`, {title: value})
+  }  
 
   return (
     <SContainer>
-      <SInput type="text" value={contents.title} disabled={isEdit}/>
+      <SInput type="text" value={value} disabled={isEdit} onChange={(e) => setValue(e.target.value)}/>
       { isEdit 
-      ? <PrimaryButton onClick={onClickEditTextButton} src={editImage}>Edit</PrimaryButton>
-      :<><MiniNormalButton src={cancelImage} onClick={onClickCancelEditButton}>Cancel</MiniNormalButton>
+      ? <PrimaryButton onClick={onClickEditTitleButton} src={editImage}>Edit</PrimaryButton>
+      :<><MiniNormalButton src={cancelImage} onClick={onClickEditTitleButton}>Cancel</MiniNormalButton>
          <MiniPrimaryButton src={saveImage} onClick={onClickSaveEditButton}>Save</MiniPrimaryButton>
        </>
       }
@@ -57,6 +69,7 @@ const SInput = styled.input`
   line-height: 40px;
   font-weight: 700;
   padding-right: 7px;
+  background-color: #F5F8FA;
   &:hover {
     cursor: pointer;
   }

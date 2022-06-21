@@ -3,10 +3,16 @@ import styled from "styled-components";
 
 import { ReactComponent as Delete } from '../../../../images/delete.svg';
 
-export const DeleteButton = () => {
+type Props = {
+  onClick: any;
+}
+
+export const DeleteButton:FC <Props> = (props) => {
+  const { onClick } = props;
+
   return (
     <SIcon>
-      <Delete/>
+      <Delete onClick={onClick}/>
     </SIcon>
   )
 }

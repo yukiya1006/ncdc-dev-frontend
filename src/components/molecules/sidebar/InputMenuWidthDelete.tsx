@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 
 import { DeleteButton } from "../../atoms/button/standard/DeleteButton"
@@ -8,11 +8,21 @@ import { DeleteButton } from "../../atoms/button/standard/DeleteButton"
 type Content = {
   id: number;
   title: string;
-  body: string;
+  body: string
 }
 
 export const InputMenuWidthDelete = () => {
   const [ contents, setContents ] = useState([]);
+  const id = useParams().id;
+
+  const [ value, setValue ] = useState(contents);
+  
+  const onClickDeleteTitle = () => {
+    axios.delete(`http://localhost:3000/content/${id}`)
+    .then(res => {
+    setContents(res.data)
+    })
+  }
   
   useEffect(() => {
     axios.get('http://localhost:3000/content')
@@ -22,14 +32,14 @@ export const InputMenuWidthDelete = () => {
 
   return (
     <>
-      {contents.map((content: Content) => (
+      {contents.map((content: Content) => (    
         <SContainer>
           <Link to={`/${content.id}`}>
-            <SInput value={content.title} className="input"/>
+            <SInput value={content.title} disabled={true} className="input" />
           </Link>
-          <DeleteButton />
+          <DeleteButton onClick={onClickDeleteTitle}/>
         </SContainer>
-      ))}
+       ))}
     </>
   )
 }
@@ -63,6 +73,7 @@ const SInput = styled.input`
   font-size: 16px;
   letter-spacing: 0;
   font-weight: 700;
+  background-color: #fff;
   &:focus {
     outline: none;
     color: #32A8F8;

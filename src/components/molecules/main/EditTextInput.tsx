@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { PrimaryButton } from "components/atoms/button/standard/PrimaryButton";
 import { MiniNormalButton } from "components/atoms/button/mini/MiniNormalButton";
@@ -6,33 +9,34 @@ import { MiniPrimaryButton } from "components/atoms/button/mini/MiniPrimaryButto
 import editImage from "../../../images/edit.svg";
 import cancelImage from "../../../images/cancel.svg";
 import saveImage from "../../../images/save.svg";
-import { useState } from "react";
 
 export const EditTextInput = (props) => {
   const { contents } = props;
-
+  const id = useParams().id; 
   const [ isEdit, setIsEdit ] = useState(true);
+  const [ value, setValue ] = useState(contents.body);
 
-  const onClickTitleButton = () => {
-    setIsEdit(!isEdit);  
-  }
-
-  const onClickCanselEditButton = () => {
-    setIsEdit(isEdit);
-  }
+  useEffect(() => {
+    setValue(contents.body);
+  },[contents])
 
   const onClickSaveEditButton = () => {
-    alert("hoge");
+    setIsEdit(!isEdit);  
+    axios.put(`http://localhost:3000/content/${id}`, {body: value})
   }
-
+  
+  const onClickTextButton = () => {
+    setIsEdit(!isEdit);
+  }
+  
   return (
     <>
     <SContainer>
-      <SText value={contents.body} disabled={isEdit}></SText>
+      <SText value={value} disabled={isEdit} onChange={(e) => setValue(e.target.value)}></SText>
       { isEdit
-      ? <PrimaryButton src={editImage} onClick={onClickTitleButton}>Edit</PrimaryButton>
+      ? <PrimaryButton src={editImage} onClick={onClickTextButton}>Edit</PrimaryButton>
       : <>
-          <MiniNormalButton src={cancelImage} onClick={onClickCanselEditButton}>Cancel</MiniNormalButton>
+          <MiniNormalButton src={cancelImage} onClick={onClickTextButton}>Cancel</MiniNormalButton>
           <MiniPrimaryButton src={saveImage} onClick={onClickSaveEditButton}>Save</MiniPrimaryButton>
         </>
       }  

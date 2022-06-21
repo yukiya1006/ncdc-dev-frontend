@@ -14,7 +14,7 @@ export const MiniPrimaryButton: FC<Props> = (props) => {
   const { children, src, onClick } = props;
 
   return (
-    <SButton>
+    <SButton onClick={onClick}>
       <img src={src} />
       <SText>{children}</SText>
     </SButton>

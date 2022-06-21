@@ -6,10 +6,6 @@ import { EditTitleInput } from "components/molecules/main/EditTitleInput";
 import { EditTextInput } from "components/molecules/main/EditTextInput";
 import { useEffect, useState } from "react";
 
-type Content = {
-  body: string;
-}
-
 export const MainArea = () => {
   const id = useParams().id;
 
