@@ -9,7 +9,6 @@ import editImage from "../../../images/edit.svg";
 import cancelImage from "../../../images/cancel.svg";
 import saveImage from "../../../images/save.svg";
 import { useParams } from "react-router-dom";
-import { stringify } from "querystring";
 
 
 export const EditTitleInput = (props) => {
@@ -20,11 +19,11 @@ export const EditTitleInput = (props) => {
 
   const onClickEditTitleButton = () => {
     setIsEdit(!isEdit);
-    console.log(isEdit);
+    // console.log(isEdit);
   }
 
   const [value, setValue] = useState(contents.title);
-  console.log(value);
+  // console.log(value);
 
   useEffect(() => {
     setValue(contents.title);
@@ -53,14 +52,15 @@ const SContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 `;
 
 const SInput = styled.input`
-  width: 87%;
+  width: 100%;
   height: 40px;
   border: none;
   margin: 0 0 20px 0;
-  padding: 0 0 0 30px;
+  padding: 0 30px 0 30px;
   border-radius: 8px;
   font-family: NotoSansJP-Bold;
   font-size: 24px;
@@ -70,9 +70,6 @@ const SInput = styled.input`
   font-weight: 700;
   padding-right: 7px;
   background-color: #F5F8FA;
-  &:hover {
-    cursor: pointer;
-  }
   &:focus {
     background-color: #fff;
     outline: 1px solid #4CB3F8;

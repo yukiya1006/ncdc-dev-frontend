@@ -5,7 +5,7 @@ export const TitleLogo = () => {
   return (
     <SContainer>
       <SImg src={logoImage} />
-      <STitle>TitleLogo</STitle>
+      <STitle>ServiceName</STitle>
     </SContainer>
   )
 }
@@ -14,7 +14,7 @@ const SContainer = styled.section`
   display: flex;
   justfiy-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding: 30px 0 20px 0;
 `;
 
 const SImg = styled.img`
@@ -22,13 +22,17 @@ const SImg = styled.img`
   height: 32px;
   background-color: #4CB3F8;
   border-radius: 50%;
-  margin: 8px 4px 0 0;
 `;
 
 const STitle = styled.h1`
-  font-family: Gotham Bold;
   width: 161px;
   height: 24px;
   color: #1A1A1A;
+  font-family: GothamBold;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  margin: 0;
+  padding-left: 4px;
 `;
 

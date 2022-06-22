@@ -7,16 +7,17 @@ import { EditTextInput } from "components/molecules/main/EditTextInput";
 import { useEffect, useState } from "react";
 
 export const MainArea = () => {
-  const id = useParams().id;
-
   const [ contents, setContents ] = useState([]);
+  const { id } = useParams();
   
   useEffect(() => {
     axios.get(`http://localhost:3000/content/${id}`)
     .then(res => {
-    setContents(res.data)
-  })},[id])
-  
+      setContents(res.data)
+    })
+  },[
+    id
+  ])
   
   return (
     <SContainer>

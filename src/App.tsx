@@ -1,18 +1,26 @@
 import styled from "styled-components";
-import axios from "axios";
-import { useEffect, useState } from "react";
-
+import { BrowserRouter as  Router, Routes, Route } from "react-router-dom";
 
 import { Footer } from "components/organisums/Footer";
 import { MainArea } from "components/organisums/MainArea";
 import { Sidebar } from "components/organisums/Sidebar";
-import { BrowserRouter as  Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
+          <Route path=""
+          element = {
+            <SContainer>
+              <Sidebar/>
+              <SRightArea>
+                <MainArea/>
+                <Footer/>
+              </SRightArea>
+            </SContainer>
+          }
+          />
           <Route path="/:id"
           element={
             <SContainer>

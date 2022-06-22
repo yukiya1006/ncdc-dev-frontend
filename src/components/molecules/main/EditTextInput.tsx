@@ -49,10 +49,11 @@ const SContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 `;
 
 const SText = styled.textarea`
-  width: 85%;
+  width: 100%;
   height: 500px;
   margin: 0;
   border: none;

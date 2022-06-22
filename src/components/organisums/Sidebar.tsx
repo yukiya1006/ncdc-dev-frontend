@@ -1,31 +1,13 @@
 import styled from "styled-components";
 
 import { TitleLogo } from "components/molecules/sidebar/TitleLogo";
-import { InputMenuWidthDelete } from '../molecules/sidebar/InputMenuWidthDelete';
-import { SidebarBottom } from '../molecules/sidebar/SidebarBottom';
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-
+import { MenuArea } from '../molecules/sidebar/MenuArea';
 
 export const Sidebar = () => {
-  const [ contents, setContents ] = useState([]);
-  const id = useParams().id;
-  
-  useEffect(() => {
-    axios.get('http://localhost:3000/content')
-    .then(res => {
-    setContents(res.data)
-  })},[])
-  
-
   return ( 
     <SContainer>
       <TitleLogo/>
-      <InputMenuWidthDelete/>
-      <SBottom>
-        <SidebarBottom content={contents}/>
-      </SBottom>
+      <MenuArea/>
     </SContainer>
   )
 }
