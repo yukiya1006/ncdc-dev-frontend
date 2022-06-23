@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { EditTitleInput } from "components/molecules/main/EditTitleInput";
 import { EditTextInput } from "components/molecules/main/EditTextInput";
-import { useEffect, useState } from "react";
 
 export const MainArea = () => {
   const [ contents, setContents ] = useState([]);
@@ -37,7 +37,7 @@ background-color: #F5F8FA ;
   letter-spacing: 0;
   font-weight: 400;
   padding: 30px;
-  margin: 30px 30px 0 30px;
+  margin: 30px 40px 0 40px;
 `;
 
 const SMain = styled.div`

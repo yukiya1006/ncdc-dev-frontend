@@ -10,8 +10,12 @@ import doneImage from "../../../images/done.svg";
 import plusImage from "../../../images/plus.svg";
 import editImage from "../../../images/edit.svg";
 
+type contentsType = {
+  map: any;
+}
+
 export const MenuArea = () => {
-  const [ contents, setContents ] = useState([]);
+  const [ contents, setContents ] = useState<contentsType>([]);
   const [ isEdit, setIsEdit ] = useState(false);
   const id = useParams().id;
 
@@ -51,14 +55,14 @@ export const MenuArea = () => {
   return (
     <>
       {contents.map((content, index) => (
-        <STitleArea key={content.id}>
+        <SMenuArea key={content.id}>
           <Link to={`/${content.id}`}>
             <SInput value={content.title} disabled={true} className="input"/>
           </Link>
           <SDeleteButton className={isEdit ? "open" : "close"}>
             <DeleteButton onClick={() => onClickDeleteTitle(content)}/>
           </SDeleteButton>
-        </STitleArea>
+        </SMenuArea>
        ))}
       <SBottomArea>
          <>
@@ -78,7 +82,8 @@ export const MenuArea = () => {
   )
 }
 
-const STitleArea = styled.div`
+const SMenuArea = styled.div`
+  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;

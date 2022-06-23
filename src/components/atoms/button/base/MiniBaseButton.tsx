@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MiniBaseButton = styled.button`
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   font-size: 10px;
   font-weight: 700;

@@ -1,6 +1,7 @@
+import axios from "axios";
 import styled from "styled-components"; 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import { PrimaryButton } from 'components/atoms/button/standard/PrimaryButton'
 import { MiniNormalButton } from "components/atoms/button/mini/MiniNormalButton";
@@ -8,32 +9,28 @@ import { MiniPrimaryButton } from "components/atoms/button/mini/MiniPrimaryButto
 import editImage from "../../../images/edit.svg";
 import cancelImage from "../../../images/cancel.svg";
 import saveImage from "../../../images/save.svg";
-import { useParams } from "react-router-dom";
 
 
 export const EditTitleInput = (props) => {
   const { contents } = props;
-  const id = useParams().id;
-
   const [ isEdit, setIsEdit ] = useState(true);
+  const [value, setValue] = useState(contents.title);
+  const id = useParams().id;
 
   const onClickEditTitleButton = () => {
     setIsEdit(!isEdit);
-    // console.log(isEdit);
   }
-
-  const [value, setValue] = useState(contents.title);
-  // console.log(value);
-
-  useEffect(() => {
-    setValue(contents.title);
-  },[contents])
-
 
   const onClickSaveEditButton = () => {
     setIsEdit(!isEdit);  
     axios.put(`http://localhost:3000/content/${id}`, {title: value})
   }  
+  
+  useEffect(() => {
+    setValue(contents.title);
+  },[contents])
+  
+  
 
   return (
     <SContainer>
